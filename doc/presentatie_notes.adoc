@@ -1,0 +1,55 @@
+
+= Presentatie Notities
+Frank van Westerop frankvanwesterop@gmail.com
+
+== Groovy
+
+=== Bronnen
+- Groovy Presentatie van Yuriy Chulovskyy: http://goo.gl/DdRxRO
+- Groovy Presentatie van Venkat Subramaniam: http://goo.gl/M6OdVO
+- Boek Groovy in Action, Konig & King, Manning
+
+==== Algemeen
+Datum presentatie staat op 27-09-2016
+Tag tussen-producten in local git repo om snel te switchen tijdens demo?
+Demo's runnen in Sublime. Gebruik nieuwe snippets 'gs' (generate-getter-setter), 'cm' (class__Bootstrap).
+
+
+
+=== Historie
+Strachan in 2003
+eigenaren project (springsource, vmware, pivotal, apache)
+
+G2One (Guillaume Laforge, Graeme Rocher, Alex Tkachman)
+SpringSource (Rod Johnson et al) koopt G2One eind 2008 om GRails toe te passen in dmServer en Grails en Groovy in de eclipse-based SpringSource Tool Suits (STS) IDE. Groovy bied dynamic language features die Java ontbeert terwijl het eenvoudig is om vanuit Groovy code bestaande Java libraries en de Spring container DI container te gebruiken.
+
+=== Eco System
+grails, gradle, logback, lazybones, spock...
+relatie met Spring Boot, Java
+native support Intelij, plugin voor eclipse, native support Sublime
+
+=== Installatie
+Bij voorkeur via sdkman
+
+=== Gebruik
+als script met grapes (ivy) voor dep. man.
+shebang line
+groovyserv
+groovy-all lib in Java project
+gradle plugin
+maven plugin
+
+
+
+=== Demo's
+1) Groovy vereenvoudigd veel Java clutter. Demo: Maak een Mailer class in java met properties 'from', 'to', 'subject' enz. en cat dit live om naar Groovy ala Yuriy. Vergeet de groovy.transform annotaties niet:
+@ToString
+@EqualsAndHashCode
+@Canonical
+
+2) Closures demo (zie pres. Venkat)
+
+3) Delegate demo. Gebruik daarbij de vereenvoudigde Mailer class van 1) als delegate.
+
+
+

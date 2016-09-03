@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+fileBase=doc/presentatie_notes
+
+asciidoctorj ${fileBase}.adoc && open ${fileBase}.html
+sleep 2s && rm ${fileBase}.html
