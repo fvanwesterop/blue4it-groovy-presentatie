@@ -1,0 +1,119 @@
+:source-highlighter: prettify
+:icons: font
+:toc: left
+:toc-title: Inhoud
+= Groovy versus Java : Groovy Basics
+
+== Removing Syntax Clutter
+Groovy syntax lijkt sterk op Java syntax, maar is compacter. Een aantal verplichte syntax elementen is optioneel gemaakt:
+ - ; na een statement
+ - haakjes weglaten paint(wall).with(red, green).and(yellow) wordt paint wall with red, green and yellow
+ - optional typing
+ - elvis operator voor null check met default value
+
+ - ?-operator voor conditioneel uitvoern method call (alleen wanneer != null)
+
+== Power Asserts
+
+Java heeft een assert statement. En Groovy heeft een power assert statement. je kunt asserts gewoon gebruiken in Java source code maar standaard doet de VM er niks mee. Je moet ze expliciet enablen door bij het opstarten van de VM een commandline-switch `-ea` mee te geven. Vervolgens kun je als argument nog packages of specifieke classes opgeven om alleen daarvoor asserts aan te zetten in de JVM.
+
+[qanda]
+VRAAG: Wie wist dit uberhaupt?::
+  Bijna niemand, toch?. Gevolg is dat asserts in Java bijna niet worden gebruikt, maar eerst Junit naar binnen gesleept wordt om uberhaupt iets te kunnen testen
+
+
+In Groovy doen we niet zo moeilijk: asserts staan altijd 'aan' en zijn bovendien een stuk krachtiger. E
+
+
+// Poert asset example here
+
+
+== Groovy Truth
+
+Alle objecten kunnen als Boolean gebruikt worden in expressies. Bijvoorbeeld:
+
+
+[[app-listing]]
+[source,groovy]
+----
+List<Fietsband> fietsbanden = new ArrayList<>
+if (fietsbanden) { // <1>
+	// doe iets met fietsbanden
+}
+----
+<1> Compilation error, ClassCastException, of wat anders?
+
+[qanda]
+Q: Naar wat evalueerd `fietsbanden` in de if-test in Java? En in wat denk je dat er in in Groovy gebeurt?::
+  A: In java geeft dit een compilatie fout. Maar in Groovy is dit een geldige evaluatie.
+Q: Wat is de uitkomst denk je?::
+  A: `false`, omdat `fietsbanden` een lege lijst is.
+
+=== Standaard 'Truth' Regels
+De standaard regels zijn als volgt: Ieder object evalueerd naar `true`, behalve in de volgende gevallen:
+
+[[app-listing]]
+[source,groovy]
+----
+assert ! null
+assert !   ""
+assert !   []
+assert !    0
+----
+
+Passen we dit toe op ons fietsbanden voorbeeld dan kunnen we de volgende beweringen doen:
+
+[[app-listing]]
+[source,groovy]
+.sheet (a):
+----
+class FietsBand {}
+List<FietsBand> fietsbanden = new ArrayList<>()
+assert fietsbanden
+fietsbanden.add new FietsBand()
+assert fietsbanden
+assert fietsbanden[0]
+----
+
+[quanda]
+Q: Welke beweringen zijn waar en welke onwaar denken jullie?::
+  A: Bovenstaande regels toepassen geeft het volgende resultaat:
+[[app-listing]]
+[source,groovy]
+.sheet (b):
+----
+class FietsBand {}
+List<FietsBand> fietsbanden = new ArrayList<>()
+assert fietsbanden		// false, want de lijst is leeg
+fietsbanden.add new FietsBand()
+assert fietsbanden		// true, lijst niet meer leeg
+assert fietsbanden[0]		//true, bevat een fietsband
+----
+
+=== Groovy Custom Truth
+
+Eerder zagen we een lijstje met standaard evaluaties. Voor je eigen classes kun je echter zelf specificeren wat een boolean evaluatie moet opleveren. Dat doe je door de `asBoolean()` method te implementeren:
+
+
+=== Coercion Gotcha
+
+== Groovy Strings
+
+'' versus ""
+Slashy strings ''' '''
+
+
+== Properties en GPath
+vereenvoudigingen tov Java
+property navigatie met GPath syntax (blz.194)
+
+== Collections
+spread operator
+flatten method
+
+== Ranges
+
+== Closures
+Java heeft lambda's, Groovy heeft closures. Verschil?
+
+

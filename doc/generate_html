@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+if [ -z "$SCRIPT_DIR" ]; then
+ exit 1
+fi
+
+cd ${SCRIPT_DIR}
+
+rm -rf html && mkdir -p html
+
+find adoc -name '*.adoc' -exec asciidoctorj -B adoc -D html $(basename {}) \;

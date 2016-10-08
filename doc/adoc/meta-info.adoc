@@ -1,0 +1,16 @@
+= Groovy Presentatie : Meta-Info
+Frank van Westerop <frankvanwesterop@gmail.com>
+
+:toc:
+
+== Bronnen
+- Groovy Presentatie van Yuriy Chulovskyy: http://goo.gl/DdRxRO
+- Groovy Presentatie van Venkat Subramaniam: http://goo.gl/M6OdVO
+- Boek Groovy in Action, Konig & King, Manning
+
+=== Algemeen
+- Datum presentatie staat op 27-09-2016
+- develop alles (incl. notes) in master branch. Maak daarna branches voor ieder onderwerp. switch tussen branches tijdens presentatie, wat de juiste artifacts in 'workspace folder zet.'
+- Demo's runnen in Sublime. Gebruik nieuwe snippets 'gs' (generate-getter-setter), 'cm' (class__Bootstrap).
+
+

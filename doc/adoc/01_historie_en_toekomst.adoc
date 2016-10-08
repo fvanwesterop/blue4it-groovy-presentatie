@@ -1,0 +1,55 @@
+:source-highlighter: prettify
+:icons: font
+:toc: left
+:toc-title: Inhoud
+= 1. Historie & Toekomst
+
+Peamble tekst. Unsure what to write here.
+
+
+== Historie
+In 2003 schrijft James Strachan op zijn http://radio-weblogs.com/0112098/2003/08/29.html[blog] over een nieuwe taal waar hij samen met Bob McWhirter aan werkt.
+
+sheet 2::
+James, zelf een Java progrmmeur, zoekt een geschikte scripting taal als complement voor Java.
+
+sheet 3::
+Hij heeft goed gekeken naar Python en Ruby Maar ze hebben een nadeel: ze draaien niet op de JVM en hebben een eigen eco-system.
+
+sheet 4..6::
+Python lijkt nog het meeste op wat hij zoekt en er is ook een port naar de JVM, Jython. Maar Jython loopt veel te ver achter op Python zelf. Hij onderzoekt de mogelijkheid een eigen taal te schrijven.
+
+sheet 7::
+Groovy heeft zodoende de volgende kenmerken
+
+sheet 8, 9::
+Draait op de JVM en integreerd naadloos met Java. Je kun vaak zelfs een `.java` file hernoemen naar een `.groovy` file en het werkt gewoon.
+
+sheet 10::
+Een nadeel van Java is de wat verbose syntax. In Groovy gaat aardig de bijl in allerlei ceremoniele taal elementen. Daarnaast worden er een de nodige syntactic sugar gestrooid over een aantal JDK library classes en allerlei zaken toegevoegd waardoor de syntax zowel compacter als expressiever wordt tov Java.
+
+sheet 11, 12::
+Groovy is zowel een dynamische taal als een taal met een dynamic type system. Die begrippen worden nogal eens door elkaar gehaald, maar zijn niet hetzelfde. Om een paar voorbeelden te geven: Visual Basic heeft een dynamic typing system, maar is geen dynamische taal. Scala daarentegen heeft een static type system maar is wel een dynamische taal. talen als Groovy en Ruby zijn beide. Wat Groovy een dynamische taal maakt, is dat het aan dynamic dispatch van method calls en aan Meta Programming doet. Wat dat te betekenen heeft kom ik later op terug, maar denk maar aan AOP runtime weafing achtige praktijken die op taal niveau aanwezig zijn en truken als het het tijdens runtime toevoegen van methods aan objecten, desnoods conditioneel. Daarnaast heeft het typing system van Groovy een krachtig  inference mechanisme zodat het specificeren van data types vaak niet nodig is, maar overigens wel is toegestaan. De type checking vind echter standaard runtime plaats.
+
+sheet 13::
+Maar later is wel de mogelijkheid toegevoegd voor compile-time type checking.
+
+Komen we op het volgende punt: Is Groovy nu een geinterpreteerd scripting taaltje? Hmm, een beetje van allebei. Eigenlijk precies hetzelfde als java: Net als Java wordt Groovy code gecompileerd naar JVM byte-code. En zoals je bij Java eerst je code gecompileerd met `javac` en vervolgens draaid met de byte code interpretter `java`, heb je bij Groovy een compiler genaamd `groovyc` en een interpretter `groovy`. Het verschil is echter dat je de interpretter ook rechtstreeks op de source files kan aanroepen. Onderwater zal de interpretter dan eerst de compiler aanroepen, maar geen `.class` files schrijven. Die worden namelijk gelijk in de heap van de JVM gezet die ook geboot wordt. Daarnaast zullen op het classpath van de JVM niet allen de JDK libraries maar ook de GDK libraries gezet worden. En bevatten je sources een class met een main method of een Runnable implementatie dan wordt deze gevonden en als entry point van je applicatie gebruikt. Je kunt echter ook de Groovy sources alleen compileren met `groovyc` en later de boel draaien niet met het `groovy` commando maar met het `java` commando. Je moet er dan alleen wel zelf voor zorgen dat de GDK classes op classpath komen te staan, maar dat betekend niet meer dan 1 dependency toevoegen in je POM of gradle build file, namelijk de groovy-all jar-file.
+
+
+In 2006 neemt Guillaume Laforge de rol van project lead over van James
+
+
+eigenaren project (springsource, vmware, pivotal, apache)
+
+
+Design Principles (gedisitilleerd uit wat er geschreven is over Groovy):
+- Dynamische taal (wat een taal dynamisch maakt komen we later op)
+- Draait op de JVM
+- Integreerd naadloos met Java
+- Helpt bij het schrijven van Unit testen (mini DSL's)
+
+
+G2One (Guillaume Laforge, Graeme Rocher, Alex Tkachman)
+SpringSource (Rod Johnson et al) koopt G2One eind 2008 om GRails toe te passen in dmServer en Grails en Groovy in de eclipse-based SpringSource Tool Suits (STS) IDE. Groovy bied dynamic language features die Java ontbeert terwijl het eenvoudig is om vanuit Groovy code bestaande Java libraries en de Spring container DI container te gebruiken.
+

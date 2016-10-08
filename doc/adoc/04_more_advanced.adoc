@@ -1,0 +1,68 @@
+//coderay, highlightjs, prettify, and pygments
+:source-highlighter: prettify
+:icons: font
+:toc: left
+:toc-title: Inhoud
+
+= Demo's
+
+== Presentatie Yoriy
+
+POJO (61 vs 8 lines - feel ze pain)
+Java integration: maven-roovy-plugin
+parameter maps voor constructors - readabilty
+.with{} closure voor init van class met private constructor (set params in clusure body) - heel nuttig voor test-mocks
+GStrings -  demo verschil met String.format()
+multi-line string voor bv inline sql statements, xml of json. Ook: niet nodig quote te escapen. voorbeeld: embedded stukje json in java met escaped quotes en mline sting in groovy  verschil in leesbaarheid
+multiple assignments def (a, b, c) = [1,2,3] werkt mooi maar wat doet def a, b = [4, 5] ?
+smart switch statements
+
+
+== String Demo's
+
+[[app-listing]]
+[source,groovy]
+----
+    void demoFluentInterfaceOperators() {
+
+		def foos = [new Foo(name:'aap'), new Foo(name:'noot'), new Foo(name:'mies') ]
+
+		def fooNames = foos
+			.collect { // <1>
+				foo -> foo.name
+				}.join(', ')
+				.concat('.')
+
+		println fooNames
+    }
+----
+<1> collect takes a closure
+
+== Groovy POJO's
+Vereenvoudigd veel Java clutter. Demo: Maak een Mailer class in java met properties 'from', 'to', 'subject' enz. en cat dit live om naar Groovy ala Yuriy. Vergeet de groovy.transform annotaties niet:
+@ToString
+@EqualsAndHashCode
+@Canonical
+Demo met 	 -* TrailRunEvent -* Deelnemers, query met GPath en spread (blz.196)
+
+
+== Closures & FP support
+Zie pres. Venkat
+
+== Delegate
+Gebruik de vereenvoudigde Mailer class POJO-demo als delegate.
+
+== Builders
+
+== DSL Support
+Command chaining: achterwege laten van . en () in een reeks method calls. Niet te verwaren met Train-wreck anti pattern, waarbij een keten van properties uitgevraagd wordt (in Java met getters) om uiteindelijk een actie uit te voeren met het laatse object.
+Bij een command chain wordt een commando of message gestuurd naar een object, die een ander object of collectie objecten retourneerd waar ook weer een commando aan gegeven wordt enz. Op het laatste object mag dan evt. een property uitgevraagd worden.
+
+zie ook: http://groovy-lang.org/dsls.html
+noem ook logback en gradle dsl's
+
+== Ook doen:
+Power asserts
+Collections
+Ranges
+

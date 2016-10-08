@@ -1,0 +1,53 @@
+:source-highlighter: prettify
+:icons: font
+:toc: left
+:toc-title: Inhoud
+= 2. Getting Started
+
+== Eco System
+grails, gradle, logback, lazybones, spock...
+relatie met Spring Boot, Java
+native support Intelij, plugin voor eclipse, native support Sublime
+
+
+=== SdkMan!
+[image]
+Package manager voor Java & Groovy software. Zie http://sdkman.io Lijkt qua functionaliteit sterk op de Ruby package manager  Ruby Version Manager (RVM). SdkMan heette tot vorig jaar ook Groovy enVironment Manager (GVM) maar is renamed omdat de scope breder is geworden dan alleen Groovy-related packages: Je kunt er inmiddels naast Groovy tooling ook bijvoorbeeld Maven, SBT, Scala, Kotlin, Ceylon, Vert.X en Spring Boot versies mee installeren en beheren. Beheer van Java SDK versies word aan gewerkt.
+Functionaliteit vergelijkbaar met NPM (Node.js), HomeBrew (OSX) e.d.
+
+==== Installatie SDKMan
+Installeren op vergelijkbare wijze als b.v. Node, HomeBrew of oh-my-zsh door bash script te draaien:
+
+$ curl -s http://get.sdkman.io | bash
+
+
+=== Gradle
+Hoe je met Gradle kunt werken heeft Brian de vorige keer al verteld.  Wanneer je zelf een nieuw project gaat is het he makkelijkse om te installeren middels SDKMan.
+
+==== Demo - installatie Gradle
+
+$ gradle --version
+$ sdk ls gradle
+$ sdk install gradle 2.5
+$ sdk ls gradle
+$ sdk uninstall gradle 2.5
+$ sdk ls gradle
+$ gradle --version
+
+Overigens wanneer je een bestaand project cloned vanuit een GIT repo, heb je Gradle niet nodig op je eigen systeem.
+
+=== Lazybones
+Scaffolding tool vergelijkbaar met maven archetypes of yeoman. Met https://github.com/pledbrook/lazybones#lazybones-project-creation-tool[Lazybones] kun je Java en Groovy gerelateerde projecten opzetten.
+
+=== Spock
+Testing framework. Kijk naar dit artikel van http://zeroturnaround.com/rebellabs/using-spock-to-test-groovy-and-java-applications/[ZeroTurnaround] voor vergelijking Junit4/Mockito met Spock.
+
+
+== Manieren van Gebruik
+als script met grapes (ivy) voor dep. man.
+shebang line
+groovyserv
+groovy-all lib in Java project
+gradle plugin
+maven plugin
+

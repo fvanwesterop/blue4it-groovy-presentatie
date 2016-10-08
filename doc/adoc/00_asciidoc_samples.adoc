@@ -1,0 +1,37 @@
+:source-highlighter: prettify
+:icons: font
+:toc: left
+:toc-title: Inhoud
+= AsciiDoc samples
+
+Peamble tekst. Lorum ipsum bladieblah. DIt is een preamble. Koop een taart en vier het.
+
+
+CAUTION: Oppassen hoor.
+
+== Example
+
+.Example Title (optional)
+===============================================================================
+`Dit is een voorbeeld. Waarschijnlijk heb je meer aan een app-listing blok.`
+===============================================================================
+
+== App-Listing
+
+[[app-listing]]
+[source,groovy]
+----
+    void demoFluentInterfaceOperators() {
+
+		def foos = [new Foo(name:'aap'), new Foo(name:'noot'), new Foo(name:'mies') ]
+
+		def fooNames = foos
+			.collect { // <1>
+				foo -> foo.name
+				}.join(', ')
+				.concat('.')
+
+		println fooNames
+    }
+----
+<1> collect takes a closure
